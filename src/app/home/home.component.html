@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <table class="table table-striped table-bordered">
+      <thead class="table_header_news col-lg">
+        <tr>
+          <!-- <th scope="col">#</th> -->
+          <th class="news_custom_width">Comments</th>
+          <th class="news_custom_width">Vote Count</th>
+          <th class="news_custom_width">Upvote</th>
+          <th>News Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let news of data$ | async">
+          <td class="news_center_align">{{ news?.num_comments}}</td>
+          <td class="news_center_align">{{ news?.points }}</td>
+          <td class="news_center_align">
+            <i class="fa fa-sort-asc add_pointer" aria-hidden="true"></i>
+          </td>
+          <td scope="col-6">{{ news?.title }}
+            <a href="{{news?.url}}" target="_blank"> 
+            <span class="news_url_class font_size">
+              ({{news?.url | modifiedUrl}})
+            </span>
+          </a>
+          <span class="font_size">
+            by
+          </span>
+            <span class="news_author_class font_size">
+              {{news?.author}}
+            </span>
+            <span class="font_size">
+              {{news?.created_at | modifiedDate}}
+            </span>
+            <span class="news_hide font_size">
+              [hide]
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-end">
+      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" size="sm" (pageChange) = "getRefreshData()">
+       
+      </ngb-pagination>
+    </div>
+  </div>
+</div>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
