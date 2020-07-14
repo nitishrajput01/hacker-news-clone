@@ -1,10 +1,11 @@
 import { getNewsData, getPageSize, getCollectionSize, getPage } from './../store/selector';
-import { LOAD_DATA } from './../store/action';
+import { LOAD_DATA, INCREASE_UP_VOTE, HIDE_NEWS, GET_LOCAL_STORAGE_STATE } from './../store/action';
 import { HackerNewsState, newsFeatureKey } from './../store/reducer';
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as CanvasJS from '../../assets/canvasjs.min';
+import { switchMap, last, map } from 'rxjs/operators';
 
 
 @Component({
@@ -25,15 +26,20 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.store.dispatch(LOAD_DATA({pageNumber: 0}))
-    this.loadData();  
+    if(localStorage.length > 0) {
+      this.store.dispatch(GET_LOCAL_STORAGE_STATE());
+      this.loadData();
+    } else {
+      this.store.dispatch(LOAD_DATA({pageNumber: 0}))
+      this.loadData();
+    }  
   }
   /**
    * function to get initData
    */
   loadData() {
-    this.data$ = this.store.pipe(select(getNewsData));
     setTimeout(() => {
+    this.data$ = this.store.pipe(select(getNewsData));
     this.store.pipe(select(getCollectionSize)).subscribe(result => this.collectionSize = result);
     this.store.pipe(select(getPageSize)).subscribe(result => this.pageSize = result);
     this.store.pipe(select(getPage)).subscribe(result => this.page = result);
@@ -74,7 +80,9 @@ export class HomeComponent implements OnInit {
  */
   getDataPoints() {
     setTimeout(() => {
+      // this.xYAxisData = [];
       this.data$.subscribe(result => this.xYAxisData = result);
+      // localStorage.setItem('charData', JSON.stringify(this.xYAxisData))
       this.xYAxisData = this.xYAxisData.map((val) => {
         return {
           x: Number(val.objectID),
@@ -83,8 +91,27 @@ export class HomeComponent implements OnInit {
       });
       this.showChart();
       this.cd.detectChanges();
-    }, 500);
+    }, 1000);
   }
+
+  /**
+   * function to upvote
+   */
+  upVote(id:any, points: any, i: any) {
+    this.store.dispatch( INCREASE_UP_VOTE({objectID: id, index: i}))
+    this.loadData();
+  }
+
+  /**
+   * function to hide news
+   */
+  hideNews(id: any, i: any) {
+    this.store.dispatch(HIDE_NEWS({index: i}));
+    this.loadData();
+  }
+
+
+
 
 }
 

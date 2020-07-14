@@ -11,11 +11,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let news of data$ | async">
+        <tr *ngFor="let news of data$ | async; index as i">
           <td class="news_center_align">{{ news?.num_comments}}</td>
           <td class="news_center_align">{{ news?.points }}</td>
           <td class="news_center_align">
-            <i class="fa fa-sort-asc add_pointer" aria-hidden="true"></i>
+            <i class="fa fa-sort-asc add_pointer" aria-hidden="true" (click) = "upVote(news.objectID, news.points, i)"></i>
           </td>
           <td scope="col-6">{{ news?.title }}
             <a href="{{news?.url}}" target="_blank"> 
@@ -32,7 +32,7 @@
             <span class="font_size">
               {{news?.created_at | modifiedDate}}
             </span>
-            <span class="news_hide font_size">
+            <span class="news_hide font_size" (click) = "hideNews(news.objectID, i)">
               [hide]
             </span>
           </td>
