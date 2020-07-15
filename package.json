@@ -11,7 +11,8 @@
     "dev:ssr": "ng run hacker-news-clone:serve-ssr",
     "serve:ssr": "node dist/hacker-news-clone/server/main.js",
     "build:ssr": "ng build --prod && ng run hacker-news-clone:server:production",
-    "prerender": "ng run hacker-news-clone:prerender"
+    "prerender": "ng run hacker-news-clone:prerender",
+    "test-headless": "ng test --watch=false --browsers=ChromeHeadless"
   },
   "private": true,
   "dependencies": {
