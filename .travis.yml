@@ -28,9 +28,10 @@ script:
   - ng build --prod
 
 deploy:
-  provider: pages
+  provider: heroku
   skip_cleanup: true
+  keep-history: true
   github_token: $GITHUB_TOKEN
-  local_dir: dist
-  on:
-    branch: master
+  api_key:
+    secure: lkASVt4SN9nlxjw8JFyVyPle9ObGcFWy8/Ip3utr5J7RoDs08qbt1+sw8KDAccK3AcMWrbjf1p/mwRMQNqu9YvRgCoSbnC01Qsyyflcridyh4deSGNEOn38HqJIojbch2gxI1WmFT56aneT2jAbh8GQgzankJWJRCeeYV8q4hw7MuG+XgthCKLWe9GJ1ORI2xwBkrhBUl82e1U3LyPLA6MH9+pbiDerE1upsUiEvN2/U8Q89mMOk6BdOXm23Yit+pNwJWFA2fY24I1x34J3hIWkpgT0IlQJi+bBjUUNQZ09IuqwLbR+hxn480keM7Qfmpj9J1cJACAQUFi3WUezVhaCuNtIm3AVbKz8UW0VNnA5cumjaF2i6z6hWn+TiBXPJYpHu4y9AmR/Fs0inIpJ4f6yvrb7jQdUYgZNlrvNDCmqtEhXF3b/72/v7FH/IsHulSnYIYAsjqPK0a/veTNZORtzAiC65AB2eAqjW1FvxTPbKRgKsgWSEoMcmNqHruXjcrBGrz1hSndY+wqovtiCUav/kLR8m9oyuwbnOkULliMtYwf3gRCPTQ4J3ZDhAqOz5+IGPEu6pr5sL4Cavkfd/zos0sb7j/aW04M35G8WZNNUqiYehvwbNWcHV9xVr+vR8bDyX84haKaDHMFXykaBHBQJt8kzlomLErGENIlFAPcU=
+  app: hacker-news-clone
