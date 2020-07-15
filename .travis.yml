@@ -5,10 +5,6 @@ language: node_js
 node_js:
   - "10"
 
-branches:
-  only:
-  - master
-
 addons:
   chrome: stable
 
@@ -16,16 +12,19 @@ cache:
   directories:
      - ./node_modules
 
+before_install:
+  - npm install -g @angular/cli
+
 install:
   - npm install
 
-
-before_script:
-  - npm install -g @angular/cli
+branches:
+  only:
+  - master
 
 script:
   - npm run test-headless
-  - ng build --prod
+  - npm run build --prod
 
 deploy:
   provider: heroku
