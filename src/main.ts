@@ -6,6 +6,7 @@ import { environment } from './environments/environment';
 import "@angular/compiler";
 import 'bootstrap';
 
+
 if (environment.production) {
   enableProdMode();
 }
