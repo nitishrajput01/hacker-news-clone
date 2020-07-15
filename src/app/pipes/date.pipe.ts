@@ -7,6 +7,6 @@ import * as moment from 'moment';
 
 export class DatePipe implements PipeTransform {
     transform(value: any, args: []) {
-        return moment(value, 'YYYYMM').fromNow();
+        return moment(value).fromNow();
     }
 }
