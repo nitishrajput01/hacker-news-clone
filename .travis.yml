@@ -33,4 +33,4 @@ deploy:
   github_token: $GITHUB_TOKEN
   local_dir: dist/hacker-news-clone/browser
   on:
-    branch: master
+    branch: gh-pages
