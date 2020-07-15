@@ -5,7 +5,6 @@ import { map, mergeMap, catchError, exhaustMap } from 'rxjs/operators';
 import { ApiServices } from '../services/http.service';
 import * as formActions from './action'
 
-
 @Injectable()
 export class HackerNewsEffects {
 
