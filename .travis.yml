@@ -31,6 +31,6 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: dist/hacker-news-clone/browser
+  local_dir: dist/hacker-news-clone
   on:
     branch: gh-pages
