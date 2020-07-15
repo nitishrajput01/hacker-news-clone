@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -14,7 +16,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HomeModule,
     StoreModule.forRoot({}),
@@ -22,6 +24,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
     }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     // NgbModule
   ],
   providers: [],
