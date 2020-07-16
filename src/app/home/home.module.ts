@@ -1,7 +1,7 @@
 import { HackerNewsState } from './../store/reducer';
 import { DatePipe } from './../pipes/date.pipe';
 import { UrlPipe } from './../pipes/url.pipe';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
@@ -30,6 +30,9 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     NgbModule,
     StoreModule.forFeature(fromReducers.newsFeatureKey, fromReducers.reducer, {metaReducers}),
     EffectsModule.forFeature([HackerNewsEffects])
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
 })
 export class HomeModule { }
