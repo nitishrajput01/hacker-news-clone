@@ -24,12 +24,3 @@ branches:
 
 script:
   - npm run test-headless
-  - npm run build --prod
-
-deploy:
-  provider: heroku
-  skip_cleanup: true
-  keep-history: true
-  api_key:
-    secure: "PaH+haKwMEdbysh3oirHzz6GVnFgKbX+yrCS2jThpS6z3RcAzcNesBPVeOhtxg/MHeY/7a4Y1Otl1Rhoe3YzXO4MR5rf1MbLpu62WiGZNhGRHG1em226t7Qa3RtBGvmqz8nafukfZA3eCX4Otm3/0VI3AmiwcKNePwSGf1lxwCubvUzv/rV51su7aalp5upAK4j8SFpB99QREPCxFknGmivCWraYwHsKekY0jhb++qzubE/K6n0yZjCe5yL8AbIcYaLbLQffDljKI8JHVj6MgNntRvTyQYgYeeZ6RJUVfVMoIJqB7RI0yJjHvF6HwE5F+XUOjCGywGej7xPYBz1uI2nJMqk3ifPbkSHbDoCrSfXfJpL/ru4ghMo7WaIVpYbw1Mun8ptN2xG/AFVPyo88h+GrgDyLdayMf5wvsR/E30ZzM84ilTO8K39Tsl6Ccgj9LklNo30k2Pif//23HbYNfYoIyac226J8MSiYFzl+B5NNHW7oK5OhgZzwonDQ8KuR/mHcjzLjfVjPNlD66tbdD9KHcz6QI4BrWb8j6tZas/ka3w2XYOsFR/3nHVB7w12KgO873a8zLk+Hhsc8nA41OX4mfzltaffncUxbGg4GNod0c3Bpkznq1MA88TD4llNTbW2PDLp29iFWM8He/7YYkTFIpV96lcf0ttV+c0aZb6A="
-  app: hacker-news-clone-demo
