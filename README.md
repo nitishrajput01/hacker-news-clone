@@ -7,6 +7,7 @@ https://hacker-news-clone-demo.herokuapp.com/
 * LocalStorage Sync with NGRX Store
 * Unit Test Cases
 * CI Pipeline Travis CI
+* Added PWA
 
 ## HackerNewsClone
 
