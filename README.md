@@ -1,4 +1,14 @@
-# HackerNewsClone
+# HackerNewsClone Demo
+
+https://hacker-news-clone-demo.herokuapp.com/
+
+## Feature Added
+* NGRX Store for State Managament
+* LocalStorage Sync with NGRX Store
+* Unit Test Cases
+* CI Pipeline Travis CI
+
+## HackerNewsClone
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
 
