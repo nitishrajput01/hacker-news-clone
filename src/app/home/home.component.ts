@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
    */
   showChart() {
     let chart = new CanvasJS.Chart("chartContainer", {
-      animationEnabled: true,
+      animationEnabled: false,
 	    theme: "light2",
       axisX: {
         title: "Id",
@@ -80,9 +80,7 @@ export class HomeComponent implements OnInit {
  */
   getDataPoints() {
     setTimeout(() => {
-      // this.xYAxisData = [];
       this.data$.subscribe(result => this.xYAxisData = result);
-      // localStorage.setItem('charData', JSON.stringify(this.xYAxisData))
       this.xYAxisData = this.xYAxisData.map((val) => {
         return {
           x: Number(val.objectID),

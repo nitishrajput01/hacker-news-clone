@@ -13,7 +13,6 @@ export class HackerNewsEffects {
         exhaustMap((result) => this.service.getFrontStories(result.pageNumber)
         .pipe(
             map((response) => {
-                // console.log(response);
                 return formActions.LOAD_SUCCESS_DATA({data: response['hits'],
                 collectionSize: response['nbHits'],
                 pageSize: response['hitsPerPage'],
